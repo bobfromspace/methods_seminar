@@ -1,0 +1,94 @@
+---
+title: 'My groundbreaking paper: Introduction'
+author:
+  - First Author^[Affiliation, email@email.com]
+  - Second Author^[Affiliation, email@email.com]
+  - Many-more Authors^[Affiliation, email@email.com]
+output: pdf_document
+abstract: "From the generator of random text: She travelling acceptance men unpleasant her especially entreaties law. Law forth but end any arise chief arose. Old her say learn these large. Joy fond many ham high seen this. Few preferred continual sir led incommode neglected. Discovered too old insensible collecting unpleasant but invitation."
+indent: true
+fontsize: 12pt
+header-includes:
+  - \usepackage{setspace}
+  - \doublespacing
+bibliography: example.bib
+nocite: "@*"
+---
+
+```{r setup, include=FALSE}
+# Convertation settings active for the whole document
+knitr::opts_chunk$set(echo = TRUE, fig.width = 7, fig.height = 5)
+library(knitr)
+library(stargazer)
+```
+
+## Footnotes
+
+Some text^[Footnote text].
+
+Also, some text[^1]. And then even more.
+
+[^1]:More footnotes.
+
+## Citing & Referencing
+
+Let's cite @Simon2001 and his work [@Simon2001] but by using `nocite` in the header we will include all publications in the specified file in the References section.
+
+
+## Equations
+
+Inline $\beta$ and $\epsilon$.
+
+On a separate line:
+
+$$y=\beta X + \epsilon$$
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE, fig.cap="See, this is a caption."}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Including tables
+
+Here's just a summary table. You can read [{knitr}'s documentation](https://www.rdocumentation.org/packages/knitr/versions/1.28/topics/kable) and do even more.
+
+```{r kable_table, echo=FALSE}
+kable(summary(pressure),
+      # use LaTeX's package {booktabs} for fancy tables
+      booktabs = TRUE,
+      caption = "My caption",
+      col.names = c("Temperature", "Pressure"))
+```
+
+## Including regression tables
+
+There are other packages but [{stargazer}](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf) is my first love once and for all.
+
+```{r stargazer_table, echo=FALSE, results="asis"}
+stargazer(lm(temperature ~ pressure, data = pressure),
+          type = "latex",
+          header=FALSE,
+          title = "Amazing regression table",
+          dep.var.labels = "Temperature",
+          covariate.labels = "Pressure")
+```
+
+## Referring to the coefficients
+
+```{r prepare the coefficient, echo=FALSE}
+adj_rsquared <- summary(lm(temperature ~ pressure, data = pressure))[["adj.r.squared"]]
+```
+
+Temperature is a dependant variable, and Pressure is the independant. Adjusged R^2^ is `r round(adj_rsquared, 2)`, which indicates a considerable linear relationship.
+
+## You deserved it
+
+![Kangaroos are a must](portrait-of-one-chilled-out-kangaroo.jpg)
+
+## References are included automatically at the end of the document
+
