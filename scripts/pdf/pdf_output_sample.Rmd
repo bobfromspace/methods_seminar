@@ -11,7 +11,7 @@ fontsize: 12pt
 header-includes:
   - \usepackage{setspace}
   - \doublespacing
-bibliography: example.bib
+bibliography: "../example.bib"
 nocite: "@*"
 ---
 
@@ -41,8 +41,7 @@ Inline $\beta$ and $\epsilon$.
 
 On a separate line:
 
-$$y=\beta X + \epsilon$$
-
+$$y_{i} =\beta_{0} + \beta_{1} x_{i} + \epsilon$$
 ## Including Plots
 
 You can also embed plots, for example:
