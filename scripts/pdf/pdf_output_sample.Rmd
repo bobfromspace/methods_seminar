@@ -41,7 +41,7 @@ Inline $\beta$ and $\epsilon$.
 
 On a separate line:
 
-$$y_{i} =\beta_{0} + \beta_{1} x_{i} + \epsilon$$
+$$y_{i} =\alpha + \beta x_{i} + \epsilon_{i}$$
 
 ## Including Plots
 
